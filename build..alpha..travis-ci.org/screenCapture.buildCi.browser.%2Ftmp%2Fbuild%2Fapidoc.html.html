@@ -1,0 +1,1791 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a>mingo (v1.1.2)</a>
+</h1>
+<h4>JavaScript implementation of MongoDB query language</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mingo">module mingo</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Aggregator">
+            function <span class="apidocSignatureSpan">mingo.</span>Aggregator
+            <span class="apidocSignatureSpan">(operators)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor">
+            function <span class="apidocSignatureSpan">mingo.</span>Cursor
+            <span class="apidocSignatureSpan">(collection, query, projection)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Query">
+            function <span class="apidocSignatureSpan">mingo.</span>Query
+            <span class="apidocSignatureSpan">(criteria, projection)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo._internal">
+            function <span class="apidocSignatureSpan">mingo.</span>_internal
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.addOperators">
+            function <span class="apidocSignatureSpan">mingo.</span>addOperators
+            <span class="apidocSignatureSpan">(opClass, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.aggregate">
+            function <span class="apidocSignatureSpan">mingo.</span>aggregate
+            <span class="apidocSignatureSpan">(collection, pipeline)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.find">
+            function <span class="apidocSignatureSpan">mingo.</span>find
+            <span class="apidocSignatureSpan">(collection, criteria, projection)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.noConflict">
+            function <span class="apidocSignatureSpan">mingo.</span>noConflict
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.remove">
+            function <span class="apidocSignatureSpan">mingo.</span>remove
+            <span class="apidocSignatureSpan">(collection, criteria)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.setup">
+            function <span class="apidocSignatureSpan">mingo.</span>setup
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mingo.</span>Aggregator.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mingo.</span>CollectionMixin</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mingo.</span>Cursor.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mingo.</span>Query.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mingo.</span>KEY_AGGREGATE</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mingo.</span>KEY_GROUP</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mingo.</span>KEY_PIPELINE</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mingo.</span>KEY_PROJECTION</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mingo.</span>KEY_QUERY</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mingo.</span>OP_AGGREGATE</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mingo.</span>OP_GROUP</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mingo.</span>OP_PIPELINE</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mingo.</span>OP_PROJECTION</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mingo.</span>OP_QUERY</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mingo.</span>VERSION</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mingo.Aggregator">module mingo.Aggregator</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Aggregator.Aggregator">
+            function <span class="apidocSignatureSpan">mingo.</span>Aggregator
+            <span class="apidocSignatureSpan">(operators)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mingo.Aggregator.prototype">module mingo.Aggregator.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Aggregator.prototype.run">
+            function <span class="apidocSignatureSpan">mingo.Aggregator.prototype.</span>run
+            <span class="apidocSignatureSpan">(collection, query)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mingo.CollectionMixin">module mingo.CollectionMixin</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.CollectionMixin.aggregate">
+            function <span class="apidocSignatureSpan">mingo.CollectionMixin.</span>aggregate
+            <span class="apidocSignatureSpan">(pipeline)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.CollectionMixin.query">
+            function <span class="apidocSignatureSpan">mingo.CollectionMixin.</span>query
+            <span class="apidocSignatureSpan">(criteria, projection)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mingo.Cursor">module mingo.Cursor</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.Cursor">
+            function <span class="apidocSignatureSpan">mingo.</span>Cursor
+            <span class="apidocSignatureSpan">(collection, query, projection)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mingo.Cursor.prototype">module mingo.Cursor.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype._fetch">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>_fetch
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.all">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>all
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.count">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>count
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.first">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>first
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.forEach">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>forEach
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.hasNext">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>hasNext
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.last">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>last
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.limit">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>limit
+            <span class="apidocSignatureSpan">(n)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.map">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>map
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.max">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>max
+            <span class="apidocSignatureSpan">(expr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.min">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>min
+            <span class="apidocSignatureSpan">(expr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.next">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>next
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.skip">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>skip
+            <span class="apidocSignatureSpan">(n)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Cursor.prototype.sort">
+            function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>sort
+            <span class="apidocSignatureSpan">(modifier)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mingo.Query">module mingo.Query</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Query.Query">
+            function <span class="apidocSignatureSpan">mingo.</span>Query
+            <span class="apidocSignatureSpan">(criteria, projection)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mingo.Query.prototype">module mingo.Query.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Query.prototype._compile">
+            function <span class="apidocSignatureSpan">mingo.Query.prototype.</span>_compile
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Query.prototype._processOperator">
+            function <span class="apidocSignatureSpan">mingo.Query.prototype.</span>_processOperator
+            <span class="apidocSignatureSpan">(field, operator, value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Query.prototype.find">
+            function <span class="apidocSignatureSpan">mingo.Query.prototype.</span>find
+            <span class="apidocSignatureSpan">(collection, projection)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Query.prototype.remove">
+            function <span class="apidocSignatureSpan">mingo.Query.prototype.</span>remove
+            <span class="apidocSignatureSpan">(collection)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mingo.Query.prototype.test">
+            function <span class="apidocSignatureSpan">mingo.Query.prototype.</span>test
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mingo" id="apidoc.module.mingo">module mingo</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Aggregator" id="apidoc.element.mingo.Aggregator">
+        function <span class="apidocSignatureSpan">mingo.</span>Aggregator
+        <span class="apidocSignatureSpan">(operators)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Aggregator = function (operators) {
+  if (!(this instanceof Mingo.Aggregator)) return new Mingo.Aggregator(operators)
+
+  this.__operators = operators
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// Filter non-matched objects (
+var result = query.remove(collection);
+```
+
+## Aggregation Pipeline
+```js
+var agg = new Mingo.<span class="apidocCodeKeywordSpan">Aggregator</span>([
+    {'$match': { "type": "homework"}},
+    {'$group':{'_id':'$student_id', 'score':{$min:'$score'}}},
+    {'$sort':{'_id': 1, 'score': 1}}
+]);
+
+var result = agg.run(collection);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor" id="apidoc.element.mingo.Cursor">
+        function <span class="apidocSignatureSpan">mingo.</span>Cursor
+        <span class="apidocSignatureSpan">(collection, query, projection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Cursor = function (collection, query, projection) {
+  if (!(this instanceof Mingo.Cursor)) {
+    return new Mingo.Cursor(collection, query, projection)
+  }
+
+  this.__query = query
+  this.__collection = collection
+  this.__projection = projection || query.__projection
+  this.__operators = {}
+  this.__result = false
+  this.__position = 0
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @param collection
+ * @param query
+ * @param projection
+ * @constructor
+ */
+Mingo.Cursor = function (collection, query, projection) {
+if (!(this instanceof Mingo.Cursor)) {
+  return new Mingo.<span class="apidocCodeKeywordSpan">Cursor</span>(collection, query, projection)
+}
+
+this.__query = query
+this.__collection = collection
+this.__projection = projection || query.__projection
+this.__operators = {}
+this.__result = false
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Query" id="apidoc.element.mingo.Query">
+        function <span class="apidocSignatureSpan">mingo.</span>Query
+        <span class="apidocSignatureSpan">(criteria, projection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Query = function (criteria, projection) {
+  if (!(this instanceof Mingo.Query)) return new Mingo.Query(criteria, projection)
+
+  this.__criteria = criteria
+  this.__projection = projection
+  this.__compiled = []
+  this._compile()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// setup the key field for your collection
+Mingo.setup({
+    key: '_id' // default
+});
+
+// create a query with criteria
+// find all grades for homework with score &gt;= 50
+var query = new Mingo.<span class="apidocCodeKeywordSpan">Query</span>({
+    type: "homework",
+    score: { $gte: 50 }
+});
+```
+
+## Searching and Filtering
+```js
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo._internal" id="apidoc.element.mingo._internal">
+        function <span class="apidocSignatureSpan">mingo.</span>_internal
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_internal = function () {
+  return Object.assign(util(), {
+    'computeValue': computeValue
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.addOperators" id="apidoc.element.mingo.addOperators">
+        function <span class="apidocSignatureSpan">mingo.</span>addOperators
+        <span class="apidocSignatureSpan">(opClass, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addOperators = function (opClass, fn) {
+
+  var newOperators = fn({
+    'computeValue': computeValue,
+    'key': keyId,
+    'ops': ops,
+    'resolve': resolve
+  })
+
+  // ensure correct type specified
+  assert(has(OPERATORS, opClass), "Could not identify operator class '" + opClass + "'")
+
+  var operators = OPERATORS[opClass]
+
+  // check for existing operators
+  each(newOperators, function (fn, op) {
+    assert(/^\$\w+$/.test(op), "Invalid operator name '" + op + "'")
+    assert(!has(operators, op), 'Operator ' + op + ' is already defined for ' + opClass + ' operators')
+  })
+
+  var wrapped = {}
+
+  switch (opClass) {
+    case KEY_QUERY:
+      each(newOperators, function (fn, op) {
+        wrapped[op] = (function (f, ctx) {
+          return function (selector, value) {
+            return {
+              test: function (obj) {
+                // value of field must be fully resolved.
+                var lhs = resolve(obj, selector)
+                var result = f.call(ctx, selector, lhs, value)
+                if (isBoolean(result)) {
+                  return result
+                } else if (result instanceof Query) {
+                  return result.test(obj)
+                } else {
+                  err("Invalid return type for '" + op + "'. Must return a Boolean or Mingo.Query")
+                }
+              }
+            }
+          }
+        }(fn, newOperators))
+      })
+      break
+    case KEY_PROJECTION:
+      each(newOperators, function (fn, op) {
+        wrapped[op] = (function (f, ctx) {
+          return function (obj, expr, selector) {
+            var lhs = resolve(obj, selector)
+            return f.call(ctx, selector, lhs, expr)
+          }
+        }(fn, newOperators))
+      })
+      break
+    default:
+      each(newOperators, function (fn, op) {
+        wrapped[op] = (function (f, ctx) {
+          return function () {
+            var args = ArrayProto.slice.call(arguments)
+            return f.apply(ctx, args)
+          }
+        }(fn, newOperators))
+      })
+  }
+
+  // toss the operator salad :)
+  Object.assign(OPERATORS[opClass], wrapped)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.aggregate" id="apidoc.element.mingo.aggregate">
+        function <span class="apidocSignatureSpan">mingo.</span>aggregate
+        <span class="apidocSignatureSpan">(collection, pipeline)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">aggregate = function (collection, pipeline) {
+  if (!isArray(pipeline)) {
+    err('Aggregation pipeline must be an array')
+  }
+  return (new Mingo.Aggregator(pipeline)).run(collection)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    {'$group':{'_id':'$student_id', 'score':{$min:'$score'}}},
+    {'$sort':{'_id': 1, 'score': 1}}
+]);
+
+var result = agg.run(collection);
+
+// shorthand
+result = Mingo.<span class="apidocCodeKeywordSpan">aggregate</span>(
+    collection,
+    [
+        {'$match': { "type": "homework"}},
+        {'$group':{'_id':'$student_id', 'score':{$min:'$score'}}},
+        {'$sort':{'_id': 1, 'score': 1}}
+    ]
+);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.find" id="apidoc.element.mingo.find">
+        function <span class="apidocSignatureSpan">mingo.</span>find
+        <span class="apidocSignatureSpan">(collection, criteria, projection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">find = function (collection, criteria, projection) {
+  return (new Mingo.Query(criteria)).find(collection, projection)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+## Searching and Filtering
+```js
+// `collection` is an Array of objects you want to query
+
+// filter collection with find()
+var cursor = query.<span class="apidocCodeKeywordSpan">find</span>(collection);
+
+// shorthand with query criteria
+// cursor = Mingo.find(collection, criteria);
+
+// sort, skip and limit by chaining
+cursor.sort({student_id: 1, score: -1})
+.skip(100)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.noConflict" id="apidoc.element.mingo.noConflict">
+        function <span class="apidocSignatureSpan">mingo.</span>noConflict
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">noConflict = function () {
+  root.Mingo = previousMingo
+  return Mingo
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.remove" id="apidoc.element.mingo.remove">
+        function <span class="apidocSignatureSpan">mingo.</span>remove
+        <span class="apidocSignatureSpan">(collection, criteria)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (collection, criteria) {
+  return (new Mingo.Query(criteria)).remove(collection)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// use first(), last() and all() to retrieve matched objects
+cursor.first();
+cursor.last();
+cursor.all();
+
+// Filter non-matched objects (
+var result = query.<span class="apidocCodeKeywordSpan">remove</span>(collection);
+```
+
+## Aggregation Pipeline
+```js
+var agg = new Mingo.Aggregator([
+{'$match': { "type": "homework"}},
+{'$group':{'_id':'$student_id', 'score':{$min:'$score'}}},
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.setup" id="apidoc.element.mingo.setup">
+        function <span class="apidocSignatureSpan">mingo.</span>setup
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setup = function (options) {
+  Object.assign(settings, options || {})
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Usage
+```js
+
+var Mingo = require('mingo');
+// or just access *Mingo* global in browser
+
+// setup the key field for your collection
+Mingo.<span class="apidocCodeKeywordSpan">setup</span>({
+key: '_id' // default
+});
+
+// create a query with criteria
+// find all grades for homework with score &gt;= 50
+var query = new Mingo.Query({
+type: "homework",
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mingo.Aggregator" id="apidoc.module.mingo.Aggregator">module mingo.Aggregator</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Aggregator.Aggregator" id="apidoc.element.mingo.Aggregator.Aggregator">
+        function <span class="apidocSignatureSpan">mingo.</span>Aggregator
+        <span class="apidocSignatureSpan">(operators)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Aggregator = function (operators) {
+  if (!(this instanceof Mingo.Aggregator)) return new Mingo.Aggregator(operators)
+
+  this.__operators = operators
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// Filter non-matched objects (
+var result = query.remove(collection);
+```
+
+## Aggregation Pipeline
+```js
+var agg = new Mingo.<span class="apidocCodeKeywordSpan">Aggregator</span>([
+    {'$match': { "type": "homework"}},
+    {'$group':{'_id':'$student_id', 'score':{$min:'$score'}}},
+    {'$sort':{'_id': 1, 'score': 1}}
+]);
+
+var result = agg.run(collection);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mingo.Aggregator.prototype" id="apidoc.module.mingo.Aggregator.prototype">module mingo.Aggregator.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Aggregator.prototype.run" id="apidoc.element.mingo.Aggregator.prototype.run">
+        function <span class="apidocSignatureSpan">mingo.Aggregator.prototype.</span>run
+        <span class="apidocSignatureSpan">(collection, query)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">run = function (collection, query) {
+  if (!isEmpty(this.__operators)) {
+    // run aggregation pipeline
+    for (var i = 0; i &lt; this.__operators.length; i++) {
+      var operator = this.__operators[i]
+      var key = keys(operator)
+      if (key.length === 1 &amp;&amp; inArray(ops(KEY_PIPELINE), key[0])) {
+        key = key[0]
+        if (query instanceof Mingo.Query) {
+          collection = pipelineOperators[key].call(query, collection, operator[key])
+        } else {
+          collection = pipelineOperators[key](collection, operator[key])
+        }
+      } else {
+        except("Invalid aggregation operator '" + key + "'")
+      }
+    }
+  }
+  return collection
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```js
+var agg = new Mingo.Aggregator([
+{'$match': { "type": "homework"}},
+{'$group':{'_id':'$student_id', 'score':{$min:'$score'}}},
+{'$sort':{'_id': 1, 'score': 1}}
+]);
+
+var result = agg.<span class="apidocCodeKeywordSpan">run</span>(collection);
+
+// shorthand
+result = Mingo.aggregate(
+collection,
+[
+    {'$match': { "type": "homework"}},
+    {'$group':{'_id':'$student_id', 'score':{$min:'$score'}}},
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mingo.CollectionMixin" id="apidoc.module.mingo.CollectionMixin">module mingo.CollectionMixin</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.CollectionMixin.aggregate" id="apidoc.element.mingo.CollectionMixin.aggregate">
+        function <span class="apidocSignatureSpan">mingo.CollectionMixin.</span>aggregate
+        <span class="apidocSignatureSpan">(pipeline)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">aggregate = function (pipeline) {
+  return Mingo.aggregate.call(null, this.toJSON(), pipeline)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    {'$group':{'_id':'$student_id', 'score':{$min:'$score'}}},
+    {'$sort':{'_id': 1, 'score': 1}}
+]);
+
+var result = agg.run(collection);
+
+// shorthand
+result = Mingo.<span class="apidocCodeKeywordSpan">aggregate</span>(
+    collection,
+    [
+        {'$match': { "type": "homework"}},
+        {'$group':{'_id':'$student_id', 'score':{$min:'$score'}}},
+        {'$sort':{'_id': 1, 'score': 1}}
+    ]
+);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.CollectionMixin.query" id="apidoc.element.mingo.CollectionMixin.query">
+        function <span class="apidocSignatureSpan">mingo.CollectionMixin.</span>query
+        <span class="apidocSignatureSpan">(criteria, projection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">query = function (criteria, projection) {
+  return Mingo.find(this.toJSON(), criteria, projection)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var Grades = Backbone.Collection.extend(Mingo.CollectionMixin);
+
+// `collection` is an array of objects
+var grades = new Grades(collection);
+
+// find students with grades less than 50 in homework or quiz
+// sort by score ascending and type descending
+cursor = grades.<span class="apidocCodeKeywordSpan">query</span>({
+    $or: [{type: "quiz", score: {$lt: 50}}, {type: "homework", score: {$lt: 50}}]
+}).sort({score: 1, type: -1}).limit(10);
+
+// return grade with the lowest score
+cursor.first();
+```
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mingo.Cursor" id="apidoc.module.mingo.Cursor">module mingo.Cursor</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.Cursor" id="apidoc.element.mingo.Cursor.Cursor">
+        function <span class="apidocSignatureSpan">mingo.</span>Cursor
+        <span class="apidocSignatureSpan">(collection, query, projection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Cursor = function (collection, query, projection) {
+  if (!(this instanceof Mingo.Cursor)) {
+    return new Mingo.Cursor(collection, query, projection)
+  }
+
+  this.__query = query
+  this.__collection = collection
+  this.__projection = projection || query.__projection
+  this.__operators = {}
+  this.__result = false
+  this.__position = 0
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @param collection
+ * @param query
+ * @param projection
+ * @constructor
+ */
+Mingo.Cursor = function (collection, query, projection) {
+if (!(this instanceof Mingo.Cursor)) {
+  return new Mingo.<span class="apidocCodeKeywordSpan">Cursor</span>(collection, query, projection)
+}
+
+this.__query = query
+this.__collection = collection
+this.__projection = projection || query.__projection
+this.__operators = {}
+this.__result = false
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mingo.Cursor.prototype" id="apidoc.module.mingo.Cursor.prototype">module mingo.Cursor.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype._fetch" id="apidoc.element.mingo.Cursor.prototype._fetch">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>_fetch
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_fetch = function () {
+  var self = this
+
+  if (this.__result !== false) {
+    return this.__result
+  }
+
+  // inject projection operator
+  if (isObject(this.__projection)) {
+    Object.assign(this.__operators, {'$project': this.__projection})
+  }
+
+  if (!isArray(this.__collection)) {
+    except('Input collection is not of valid type. Must be an Array.')
+  }
+
+  // filter collection
+  this.__result = this.__collection.filter(this.__query.test, this.__query)
+  var pipeline = []
+
+  each(['$sort', '$skip', '$limit', '$project'], function (op) {
+    if (has(self.__operators, op)) {
+      var selected = {}
+      selected[op] = self.__operators[op]
+      pipeline.push(selected)
+    }
+  })
+
+  if (pipeline.length &gt; 0) {
+    var aggregator = new Mingo.Aggregator(pipeline)
+    this.__result = aggregator.run(this.__result, this.__query)
+  }
+  return this.__result
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+},
+
+/**
+ * Fetch and return all matched results
+ * @returns {Array}
+ */
+all: function () {
+  return this.<span class="apidocCodeKeywordSpan">_fetch</span>()
+},
+
+/**
+ * Fetch and return the first matching result
+ * @returns {Object}
+ */
+first: function () {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.all" id="apidoc.element.mingo.Cursor.prototype.all">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>all
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">all = function () {
+  return this._fetch()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+while (cursor.hasNext()) {
+    console.log(cursor.next());
+}
+
+// use first(), last() and all() to retrieve matched objects
+cursor.first();
+cursor.last();
+cursor.<span class="apidocCodeKeywordSpan">all</span>();
+
+// Filter non-matched objects (
+var result = query.remove(collection);
+```
+
+## Aggregation Pipeline
+```js
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.count" id="apidoc.element.mingo.Cursor.prototype.count">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>count
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">count = function () {
+  return this._fetch().length
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// sort, skip and limit by chaining
+cursor.sort({student_id: 1, score: -1})
+    .skip(100)
+    .limit(100);
+
+// count matches
+cursor.<span class="apidocCodeKeywordSpan">count</span>();
+
+// iterate cursor
+// iteration is forward only
+while (cursor.hasNext()) {
+    console.log(cursor.next());
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.first" id="apidoc.element.mingo.Cursor.prototype.first">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>first
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">first = function () {
+  return this.count() &gt; 0 ? this._fetch()[0] : null
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// iterate cursor
+// iteration is forward only
+while (cursor.hasNext()) {
+    console.log(cursor.next());
+}
+
+// use first(), last() and all() to retrieve matched objects
+cursor.<span class="apidocCodeKeywordSpan">first</span>();
+cursor.last();
+cursor.all();
+
+// Filter non-matched objects (
+var result = query.remove(collection);
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.forEach" id="apidoc.element.mingo.Cursor.prototype.forEach">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>forEach
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">forEach = function (callback) {
+  each(this._fetch(), callback)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @param  {Function} callback The callback to run per item
+ * @param  {*}   ctx  The object to use a context
+ * @return {void}
+ */
+function each (obj, callback, ctx) {
+assert(obj === Object(obj), "Cannot iterate over object of type '" + getType(obj) + "'")
+if (isArray(obj)) {
+  obj.<span class="apidocCodeKeywordSpan">forEach</span>(callback, ctx)
+} else {
+  for (var k in obj) {
+    if (has(obj, k)) {
+      callback.call(ctx, obj[k], k)
+    }
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.hasNext" id="apidoc.element.mingo.Cursor.prototype.hasNext">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>hasNext
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasNext = function () {
+  return this.count() &gt; this.__position
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    .limit(100);
+
+// count matches
+cursor.count();
+
+// iterate cursor
+// iteration is forward only
+while (cursor.<span class="apidocCodeKeywordSpan">hasNext</span>()) {
+    console.log(cursor.next());
+}
+
+// use first(), last() and all() to retrieve matched objects
+cursor.first();
+cursor.last();
+cursor.all();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.last" id="apidoc.element.mingo.Cursor.prototype.last">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>last
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">last = function () {
+  return this.count() &gt; 0 ? this._fetch()[this.count() - 1] : null
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// iteration is forward only
+while (cursor.hasNext()) {
+    console.log(cursor.next());
+}
+
+// use first(), last() and all() to retrieve matched objects
+cursor.first();
+cursor.<span class="apidocCodeKeywordSpan">last</span>();
+cursor.all();
+
+// Filter non-matched objects (
+var result = query.remove(collection);
+```
+
+## Aggregation Pipeline
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.limit" id="apidoc.element.mingo.Cursor.prototype.limit">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>limit
+        <span class="apidocSignatureSpan">(n)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">limit = function (n) {
+  Object.assign(this.__operators, {'$limit': n})
+  return this
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// shorthand with query criteria
+// cursor = Mingo.find(collection, criteria);
+
+// sort, skip and limit by chaining
+cursor.sort({student_id: 1, score: -1})
+    .skip(100)
+    .<span class="apidocCodeKeywordSpan">limit</span>(100);
+
+// count matches
+cursor.count();
+
+// iterate cursor
+// iteration is forward only
+while (cursor.hasNext()) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.map" id="apidoc.element.mingo.Cursor.prototype.map">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>map
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">map = function (callback) {
+  return map(this._fetch(), callback)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+/**
+ * Deep clone an object
+ */
+function clone (arg) {
+  switch (getType(arg)) {
+    case 'array':
+      return arg.<span class="apidocCodeKeywordSpan">map</span>(clone)
+    case 'object':
+      return map(arg, clone)
+    default:
+      return arg
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.max" id="apidoc.element.mingo.Cursor.prototype.max">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>max
+        <span class="apidocSignatureSpan">(expr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">max = function (expr) {
+  return groupOperators.$max(this._fetch(), expr)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var o = Object(this)
+var len = o.length &gt;&gt;&gt; 0
+
+if (len === 0) {
+  return false
+}
+var n = fromIndex | 0
+var k = Math.<span class="apidocCodeKeywordSpan">max</span>(n &gt;= 0 ? n : len - Math.abs(n), 0)
+
+while (k &lt; len) {
+  if (o[k] === searchElement) {
+    return true
+  }
+  k++
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.min" id="apidoc.element.mingo.Cursor.prototype.min">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>min
+        <span class="apidocSignatureSpan">(expr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">min = function (expr) {
+  return groupOperators.$min(this._fetch(), expr)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  arr = inputs[i]
+
+  if (isNil(arr)) return null
+  assert(isArray(arr), "'inputs' expression values must resolve to an array or null")
+
+  len = useLongestLength
+    ? Math.max(len, arr.length)
+    : Math.<span class="apidocCodeKeywordSpan">min</span>(len || arr.length, arr.length)
+}
+
+var result = []
+var defaults = expr.defaults || []
+
+for (i = 0; i &lt; len; i++) {
+  arr = inputs.map(function (val, index) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.next" id="apidoc.element.mingo.Cursor.prototype.next">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>next
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">next = function () {
+  if (this.hasNext()) {
+    return this._fetch()[this.__position++]
+  }
+  return null
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// count matches
+cursor.count();
+
+// iterate cursor
+// iteration is forward only
+while (cursor.hasNext()) {
+    console.log(cursor.<span class="apidocCodeKeywordSpan">next</span>());
+}
+
+// use first(), last() and all() to retrieve matched objects
+cursor.first();
+cursor.last();
+cursor.all();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.skip" id="apidoc.element.mingo.Cursor.prototype.skip">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>skip
+        <span class="apidocSignatureSpan">(n)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">skip = function (n) {
+  Object.assign(this.__operators, {'$skip': n})
+  return this
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var cursor = query.find(collection);
+
+// shorthand with query criteria
+// cursor = Mingo.find(collection, criteria);
+
+// sort, skip and limit by chaining
+cursor.sort({student_id: 1, score: -1})
+    .<span class="apidocCodeKeywordSpan">skip</span>(100)
+    .limit(100);
+
+// count matches
+cursor.count();
+
+// iterate cursor
+// iteration is forward only
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Cursor.prototype.sort" id="apidoc.element.mingo.Cursor.prototype.sort">
+        function <span class="apidocSignatureSpan">mingo.Cursor.prototype.</span>sort
+        <span class="apidocSignatureSpan">(modifier)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sort = function (modifier) {
+  Object.assign(this.__operators, {'$sort': modifier})
+  return this
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// filter collection with find()
+var cursor = query.find(collection);
+
+// shorthand with query criteria
+// cursor = Mingo.find(collection, criteria);
+
+// sort, skip and limit by chaining
+cursor.<span class="apidocCodeKeywordSpan">sort</span>({student_id: 1, score: -1})
+    .skip(100)
+    .limit(100);
+
+// count matches
+cursor.count();
+
+// iterate cursor
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mingo.Query" id="apidoc.module.mingo.Query">module mingo.Query</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Query.Query" id="apidoc.element.mingo.Query.Query">
+        function <span class="apidocSignatureSpan">mingo.</span>Query
+        <span class="apidocSignatureSpan">(criteria, projection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Query = function (criteria, projection) {
+  if (!(this instanceof Mingo.Query)) return new Mingo.Query(criteria, projection)
+
+  this.__criteria = criteria
+  this.__projection = projection
+  this.__compiled = []
+  this._compile()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// setup the key field for your collection
+Mingo.setup({
+    key: '_id' // default
+});
+
+// create a query with criteria
+// find all grades for homework with score &gt;= 50
+var query = new Mingo.<span class="apidocCodeKeywordSpan">Query</span>({
+    type: "homework",
+    score: { $gte: 50 }
+});
+```
+
+## Searching and Filtering
+```js
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mingo.Query.prototype" id="apidoc.module.mingo.Query.prototype">module mingo.Query.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Query.prototype._compile" id="apidoc.element.mingo.Query.prototype._compile">
+        function <span class="apidocSignatureSpan">mingo.Query.prototype.</span>_compile
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_compile = function () {
+  if (isEmpty(this.__criteria)) return
+
+  assert(isObject(this.__criteria), 'Criteria must be of type Object')
+
+  for (var field in this.__criteria) {
+    if (has(this.__criteria, field)) {
+      var expr = this.__criteria[field]
+      if (inArray(['$and', '$or', '$nor', '$where'], field)) {
+        this._processOperator(field, field, expr)
+      } else {
+        // normalize expression
+        expr = normalize(expr)
+        for (var op in expr) {
+          if (has(expr, op)) {
+            this._processOperator(field, op, expr[op])
+          }
+        }
+      }
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ */
+Mingo.Query = function (criteria, projection) {
+if (!(this instanceof Mingo.Query)) return new Mingo.Query(criteria, projection)
+
+this.__criteria = criteria
+this.__projection = projection
+this.__compiled = []
+this.<span class="apidocCodeKeywordSpan">_compile</span>()
+}
+
+Mingo.Query.prototype = {
+
+_compile: function () {
+  if (isEmpty(this.__criteria)) return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Query.prototype._processOperator" id="apidoc.element.mingo.Query.prototype._processOperator">
+        function <span class="apidocSignatureSpan">mingo.Query.prototype.</span>_processOperator
+        <span class="apidocSignatureSpan">(field, operator, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_processOperator = function (field, operator, value) {
+  if (inArray(ops(KEY_QUERY), operator)) {
+    this.__compiled.push(queryOperators[operator](field, value))
+  } else {
+    except("Invalid query operator '" + operator + "' detected")
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+assert(isObject(this.__criteria), 'Criteria must be of type Object')
+
+for (var field in this.__criteria) {
+  if (has(this.__criteria, field)) {
+    var expr = this.__criteria[field]
+    if (inArray(['$and', '$or', '$nor', '$where'], field)) {
+      this.<span class="apidocCodeKeywordSpan">_processOperator</span>(field, field, expr)
+    } else {
+      // normalize expression
+      expr = normalize(expr)
+      for (var op in expr) {
+        if (has(expr, op)) {
+          this._processOperator(field, op, expr[op])
+        }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Query.prototype.find" id="apidoc.element.mingo.Query.prototype.find">
+        function <span class="apidocSignatureSpan">mingo.Query.prototype.</span>find
+        <span class="apidocSignatureSpan">(collection, projection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">find = function (collection, projection) {
+  return new Mingo.Cursor(collection, this, projection)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+## Searching and Filtering
+```js
+// `collection` is an Array of objects you want to query
+
+// filter collection with find()
+var cursor = query.<span class="apidocCodeKeywordSpan">find</span>(collection);
+
+// shorthand with query criteria
+// cursor = Mingo.find(collection, criteria);
+
+// sort, skip and limit by chaining
+cursor.sort({student_id: 1, score: -1})
+.skip(100)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Query.prototype.remove" id="apidoc.element.mingo.Query.prototype.remove">
+        function <span class="apidocSignatureSpan">mingo.Query.prototype.</span>remove
+        <span class="apidocSignatureSpan">(collection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (collection) {
+  var self = this
+  return collection.reduce(function(acc, obj) {
+    if (!self.test(obj)) {
+      acc.push(obj)
+    }
+    return acc
+  }, [])
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// use first(), last() and all() to retrieve matched objects
+cursor.first();
+cursor.last();
+cursor.all();
+
+// Filter non-matched objects (
+var result = query.<span class="apidocCodeKeywordSpan">remove</span>(collection);
+```
+
+## Aggregation Pipeline
+```js
+var agg = new Mingo.Aggregator([
+{'$match': { "type": "homework"}},
+{'$group':{'_id':'$student_id', 'score':{$min:'$score'}}},
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mingo.Query.prototype.test" id="apidoc.element.mingo.Query.prototype.test">
+        function <span class="apidocSignatureSpan">mingo.Query.prototype.</span>test
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">test = function (obj) {
+  for (var i = 0; i &lt; this.__compiled.length; i++) {
+    if (!this.__compiled[i].test(obj)) {
+      return false
+    }
+  }
+  return true
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var names = selector.split('.')
+var key = names[0]
+var next = names.length === 1 || names.slice(1).join('.')
+
+if (names.length === 1) {
+  fn(obj, key)
+} else { // nested objects
+  if (isArray(obj) &amp;&amp; !/^\d+$/.<span class="apidocCodeKeywordSpan">test</span>(key)) {
+    each(obj, function (item) {
+      traverse(item, selector, fn, force)
+    })
+  } else {
+    // force the rest of the graph while traversing
+    if (force === true) {
+      var exists = has(obj, key)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
